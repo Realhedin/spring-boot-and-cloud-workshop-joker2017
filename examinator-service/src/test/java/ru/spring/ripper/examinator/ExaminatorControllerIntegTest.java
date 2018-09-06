@@ -29,10 +29,11 @@ public class ExaminatorControllerIntegTest {
   @Test
   public void checkExamineContract() throws Exception {
 
-    mockMvc.perform(
+      String content = "{ \"title\":\"exam\", \"student\": \"Толкачёв Кирилл\" }";
+      mockMvc.perform(
         post("/examine")
             .contentType(MediaType.APPLICATION_JSON)
-            .content("{ \"title\":\"exam\", \"student\": \"Толкачёв Кирилл\" }")
+            .content(content)
     )
         .andExpect(jsonPath("$.mark", allOf(greaterThan(0), lessThan(101))))
         .andExpect(jsonPath("$.title", equalTo("exam")))
