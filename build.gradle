@@ -3,7 +3,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE'
+    classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.15.RELEASE'
   }
 }
 
@@ -24,7 +24,7 @@ allprojects {
     }
 
     dependencies {
-      dependency 'org.projectlombok:lombok:1.16.8'
+      dependency 'org.projectlombok:lombok:1.18.2'
     }
   }
 }
