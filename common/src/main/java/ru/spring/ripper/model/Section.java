@@ -11,13 +11,13 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-class Section {
+public class Section {
 
     private String title;
 
     private String description;
 
     @Singular("addExcercise")
-    private List<Excercise> excerciseList;
+    private List<Exercise> excerciseList;
 
 }
