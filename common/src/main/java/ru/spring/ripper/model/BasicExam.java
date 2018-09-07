@@ -1,9 +1,6 @@
 package ru.spring.ripper.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Singular;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,6 +10,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+public
 //@SuperBuilder
 class BasicExam {
 

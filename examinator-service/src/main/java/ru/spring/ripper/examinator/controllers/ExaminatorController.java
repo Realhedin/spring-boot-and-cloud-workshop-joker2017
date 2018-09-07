@@ -2,6 +2,7 @@ package ru.spring.ripper.examinator.controllers;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import ru.spring.ripper.model.BasicExam;
 import ru.spring.ripper.model.CheckedExam;
 import ru.spring.ripper.model.SolvedExam;
 
@@ -16,7 +17,7 @@ public class ExaminatorController {
     public CheckedExam examine(@RequestBody SolvedExam solvedExam) {
         return CheckedExam.builder()
                 .mark(5)
-                .title(solvedExam.getTitle())
+                .basicExam(BasicExam.builder().title(solvedExam.getTitle()).build())
                 .build();
     }
 
@@ -41,7 +42,7 @@ public class ExaminatorController {
     public CheckedExam examine2(@PathVariable String title, @RequestParam Boolean debug) {
         return CheckedExam.builder()
                 .mark(3)
-                .title(title)
+                .basicExam(BasicExam.builder().title(title).build())
                 .build();
     }
 }

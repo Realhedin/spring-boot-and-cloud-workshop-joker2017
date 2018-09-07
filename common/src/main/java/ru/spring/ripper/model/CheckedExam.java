@@ -1,24 +1,30 @@
 package ru.spring.ripper.model;
 
-import lombok.*;
-
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Delegate;
 
 /**
  * Created by dkorolev on 9/5/2018.
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 //@SuperBuilder
-public class CheckedExam extends BasicExam {
+public class CheckedExam {
 
-    @Builder
-    public CheckedExam(String title, List<Section> sectionList, int mark) {
-        super(title, sectionList);
-        this.mark = mark;
-    }
+    //    @Builder
+//    public CheckedExam(String title, List<Section> sectionList, int mark) {
+//        super(title, sectionList);
+//        this.mark = mark;
+//    }
+    @Delegate
+    @JsonIgnore
+    private BasicExam basicExam = new BasicExam();
 
     private int mark;
 
