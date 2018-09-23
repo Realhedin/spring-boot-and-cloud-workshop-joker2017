@@ -31,4 +31,9 @@ public class RandomExerciesController {
         }
         return exercises;
     }
+
+    @GetMapping("/exercise/findByQuestion")
+    public Exercise findExamByName(@RequestParam String question) {
+        return repository.findByQuestion(question);
+    }
 }
