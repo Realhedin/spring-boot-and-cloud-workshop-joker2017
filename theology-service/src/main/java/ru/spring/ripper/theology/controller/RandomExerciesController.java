@@ -21,7 +21,7 @@ import java.util.Random;
                          //It's better practice than inject fields (no curcuit dependency). Lombok annotation.
 public class RandomExerciesController {
 
-    private ExerciseRepository repository;
+    private final ExerciseRepository repository;
 
     @GetMapping("/exercise/random")
     public List<Exercise> randomExam(@RequestParam(defaultValue = "5") int count) {
