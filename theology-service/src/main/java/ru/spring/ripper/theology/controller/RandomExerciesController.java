@@ -23,6 +23,9 @@ public class RandomExerciesController {
   public List<Exercise> randomExercises(@RequestParam(defaultValue = "5") int count) {
     List<Exercise> allIds = exerciseRepository.findAll();
     Collections.shuffle(allIds);
+    if (count > allIds.size()) {
+      count = allIds.size();
+    }
     return allIds.subList(0, count);
   }
 

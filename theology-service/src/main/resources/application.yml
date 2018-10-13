@@ -1,3 +1,5 @@
+server:
+  port: 8080
 theology:
   questions-and-answers:
     "не грешно ли лезть в атом?": "nope"
