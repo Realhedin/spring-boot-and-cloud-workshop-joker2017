@@ -1,0 +1,5 @@
+server:
+  port: 8082
+exercises:
+  urls:
+    "math": "http://localhost:8080/"
