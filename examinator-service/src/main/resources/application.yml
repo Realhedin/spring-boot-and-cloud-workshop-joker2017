@@ -3,3 +3,4 @@ server:
 exercises:
   urls:
     "theology": "http://localhost:8080/"
+    "math": "http://localhost:8082/"
