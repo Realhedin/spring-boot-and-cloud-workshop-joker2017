@@ -1,8 +1,17 @@
 server:
   port: 8081
 
+spring:
+  application:
+    name: examinator-service
+
 exercises:
   urls:
     "theology": "http://localhost:8080/"
     "math":     "http://localhost:8082/"
-    "examinator":"http://localhost:8081/"
+    "examinator": "http://localhost:8081/"
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
