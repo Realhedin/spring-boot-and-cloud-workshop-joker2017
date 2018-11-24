@@ -1,5 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: theology-service
+
 theology:
   questions-and-answers:
     "не грешно ли лезть в атом?": "nope"
     "аннотации это грех?": "только если тебя зовут Егор"
     "Самый главный грех?": "Copy Paste"
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
