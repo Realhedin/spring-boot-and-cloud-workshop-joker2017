@@ -20,10 +20,14 @@ import javax.annotation.PostConstruct;
 @EntityScan(basePackageClasses = Exercise.class)
 @EnableConfigurationProperties(TheologyApplicationProperties.class)
 public class TheologyApplication {
+  private final ExerciseRepository exerciseRepository;
+  private final TheologyApplicationProperties theologyApplicationProperties;
+
   @Autowired
-  ExerciseRepository exerciseRepository;
-  @Autowired
-  TheologyApplicationProperties theologyApplicationProperties;
+  public TheologyApplication(ExerciseRepository exerciseRepository, TheologyApplicationProperties theologyApplicationProperties) {
+    this.exerciseRepository = exerciseRepository;
+    this.theologyApplicationProperties = theologyApplicationProperties;
+  }
 
   @PostConstruct //flyway для бедных
   public void init() {
