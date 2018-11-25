@@ -39,6 +39,9 @@ public class ExaminatorComposerControllerIntegTest {
   Resource theologyResponse;
 
   @Test
+  /**
+   * will fail after switching into Eureka
+   */
   public void should_invoke_theology_service_and_return_exam() throws Exception {
 
     mockServer.expect(

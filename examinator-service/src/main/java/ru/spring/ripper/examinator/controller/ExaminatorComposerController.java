@@ -1,11 +1,11 @@
 package ru.spring.ripper.examinator.controller;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import ru.spring.ripper.examinator.ExternalServiceProperties;
 import ru.spring.ripper.examinator.domain.Examine;
 import ru.spring.ripper.examinator.domain.Exercise;
 import ru.spring.ripper.examinator.domain.Section;
@@ -23,14 +23,13 @@ import static java.util.stream.Collectors.toList;
 @RestController
 public class ExaminatorComposerController {
   private final RestTemplate restTemplate;
-  private ExternalServiceProperties externalServiceProperties;
 
   public ExaminatorComposerController(
       RestTemplateBuilder restTemplate,
-      ExternalServiceProperties externalServiceProperties
+      //allow to use service-name and check with Eureka to get instance of it
+      LoadBalancerInterceptor loadBalancerInterceptor
   ) {
-    this.restTemplate = restTemplate.build();
-    this.externalServiceProperties = externalServiceProperties;
+    this.restTemplate = restTemplate.interceptors(loadBalancerInterceptor).build();
   }
 
   @PostMapping("/examine/collect")
@@ -58,9 +57,7 @@ public class ExaminatorComposerController {
   }
 
   private String discoverExerciseEndpoint(String serviceName, Integer exerciseCount) {
-    String serviceEndpoint = externalServiceProperties.getUrls().get(serviceName);
-
-    return serviceEndpoint + "/exercise/random?count=" + exerciseCount;
+      return "http://" + serviceName + "-service/exercise/random?count=" + exerciseCount;
   }
 
 }
